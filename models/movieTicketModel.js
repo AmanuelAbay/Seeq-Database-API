@@ -1,0 +1,1 @@
+// movie ticket schema will be done here

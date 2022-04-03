@@ -1,0 +1,11 @@
+{
+    "name": "seeqdb",
+    "version": "1.0.0",
+    "description": "seed full database development with API",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Team_Seeq",
+    "license": "ISC"
+}
