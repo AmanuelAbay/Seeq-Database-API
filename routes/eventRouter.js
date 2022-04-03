@@ -1,22 +1,19 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
-const tourController = require('./../controllers/eventController');
+const cinemaController = require('./../controllers/cinemaController');
 
 const router = express.Router();
 
-// router.param('id', tourController.checkID);
-router.route('/tour-stats').get(tourController.getTourStatus);
-router.route('/monthly-plan/:year').get(tourController.getMonthlyPlan)
 
 router
     .route('/')
-    .get(tourController.getAllTours)
-    .post(tourController.createTour);
+    .get(cinemaController.getAllCinemas)
+    .post(cinemaController.createCinema);
 
 router
     .route('/:id')
-    .get(tourController.getTour)
-    .patch(tourController.updateTour)
-    .delete(tourController.deleteTour);
+    .get(cinemaController.getCinem)
+    .patch(cinemaController.updateCinema)
+    .delete(cinemaController.deleteCinema);
 
 module.exports = router;

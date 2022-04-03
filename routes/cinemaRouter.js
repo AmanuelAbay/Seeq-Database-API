@@ -4,9 +4,6 @@ const cinemaController = require('./../controllers/cinemaController');
 
 const router = express.Router();
 
-// router.param('id', tourController.checkID);
-// router.route('/tour-stats').get(cinemaController.getTourStatus);
-// router.route('/monthly-plan/:year').get(cinemaController.getMonthlyPlan)
 
 router
     .route('/')
