@@ -1,26 +1,14 @@
 const mongoose = require('mongoose');
 
-const eventSchema = new mongoose.Schema({
+const eventTicketSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "please insert your name"]
-    },
-    image_url: {
-        type: [String]
     },
     cover_image: {
         type: String,
         required: [true, "please insert the cover photo"]
     },
-    description: {
-        type: String,
-        required: [true, "please insert your email"]
-    },
-    category: {
-        type: String,
-        required: [true, "please insert your password"]
-    },
-    status: String,
     organizer: {
         type: mongoose.Schema.ObjectId,
         ref: 'Organizer'
@@ -54,9 +42,6 @@ const eventSchema = new mongoose.Schema({
         },
         default: 0
     },
-    quantity: {
-        type: Number
-    },
     place: {
         city: {
             type: String,
@@ -67,6 +52,14 @@ const eventSchema = new mongoose.Schema({
         },
         required: [true, "please insert the place where event will be takes place"]
     },
+    users: [{
+        id: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Customer'
+        },
+        ticket_numbers: Number,
+        status: String
+    }]
 })
-const Event = mongoose.model('Organizer', eventSchema);
-module.exports = Event
+const EventTicket = mongoose.model('eventTicket', eventTicketSchema);
+module.exports = EventTicket

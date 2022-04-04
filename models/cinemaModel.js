@@ -17,7 +17,6 @@ const organizerSchema = new mongoose.Schema({
         type: String,
         required: [true, "please insert your password"],
         minLength: 8,
-        select: false
     },
     address: {
         city: {
@@ -29,7 +28,7 @@ const organizerSchema = new mongoose.Schema({
         },
     },
     seat: {
-        totolRoom: {
+        totalRoom: {
             type: Number,
             required: [true, "please insert total room number"]
         },
@@ -48,5 +47,5 @@ const organizerSchema = new mongoose.Schema({
         }
     }
 })
-const Cinema = mongoose.model('Organizer', organizerSchema);
+const Cinema = mongoose.model('Cinema', organizerSchema);
 module.exports = Cinema

@@ -3,8 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 
 const cinemaRouter = require('./routes/cinemaRouter');
-const organizerRouter = require('./routes/organizerRouter');
-
+const customerRouter = require('./routes/customerRouter');
+// const organizerRouter = require('./routes/organizerRouter');
 const app = express();
 
 // 1) MIDDLEWARES
@@ -24,9 +24,9 @@ app.use((req, res, next) => {
 // 3) ROUTES
 
 app.use('/seeq/api/cinemas', cinemaRouter);
-app.use('/seeq/api/organizers', organizerRouter);
-app.use('/seeq/api/movie', cinemaRouter);
-app.use('/seeq/api/events', organizerRouter);
+// app.use('/seeq/api/organizers', organizerRouter);
+app.use('/seeq/api/user', customerRouter);
+// app.use('/seeq/api/events', organizerRouter);
 app.all('*', (req, res, next) => {
     res.status(404).json({
         status: 'fail',

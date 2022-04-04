@@ -6,8 +6,9 @@ const customerSchema = new mongoose.Schema({
         required: [true, "please insert your name"]
     },
     phone_number: {
-        type: Number,
-        required: [true, "please insert your phone number"]
+        type: String,
+        required: [true, "please insert your phone number"],
+        minLength: 10
     },
     email: {
         type: String,

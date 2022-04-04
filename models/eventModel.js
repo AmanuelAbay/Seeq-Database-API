@@ -67,6 +67,14 @@ const eventSchema = new mongoose.Schema({
         },
         required: [true, "please insert the place where event will be takes place"]
     },
+    attendee: [{
+        id: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'Customer'
+        },
+        ticket_numbers: Number,
+        status: String,
+    }]
 })
-const Event = mongoose.model('Organizer', eventSchema);
+const Event = mongoose.model('Event', eventSchema);
 module.exports = Event

@@ -12,7 +12,7 @@ router
 
 router
     .route('/:id')
-    .get(cinemaController.getCinem)
+    .get(cinemaController.getCinema)
     .patch(cinemaController.updateCinema)
     .delete(cinemaController.deleteCinema);
 
