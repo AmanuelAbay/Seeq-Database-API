@@ -1,13 +1,13 @@
-const Organizer = require("./../models/organizerModel");
+const MovieTicket = require("./../models/movieTicketModel");
 
-exports.getAllOrganizers = async (req, res) => {
+exports.getAllMovieTickets = async (req, res) => {
   try {
-    const organizers = await Organizer.find();
+    const movieTickets = await MovieTicket.find();
     res.status(200).json({
       status: "success",
       requestedAt: req.requestTime,
-      results: organizers.length,
-      data: organizers,
+      results: movieTickets.length,
+      data: movieTickets,
     });
   } catch (err) {
     res.status(404).json({
@@ -17,15 +17,15 @@ exports.getAllOrganizers = async (req, res) => {
   }
 };
 
-exports.getOrganizer = async (req, res) => {
+exports.getMovieTicket = async (req, res) => {
   // console.log(req.params);
   // const id = req.params.id * 1;
   try {
-    const organizer = await Organizer.findById(req.params.id);
+    const movieTicket = await MovieTicket.findById(req.params.id);
     res.status(200).json({
       status: "success",
       data: {
-        organizer,
+        movieTicket,
       },
     });
   } catch (err) {
@@ -37,13 +37,13 @@ exports.getOrganizer = async (req, res) => {
   // const tour = tours.find(el => el.id === id);
 };
 
-exports.createOrganizer = async (req, res) => {
+exports.createMovieTicket = async (req, res) => {
   try {
-    const newOrganizer = await Organizer.create(req.body);
+    const newMovieTicket = await MovieTicket.create(req.body);
     res.status(200).json({
       status: "success",
       data: {
-        organizer_id: newOrganizer._id,
+        movieTicket_id: newMovieTicket._id,
       },
     });
   } catch (err) {
@@ -54,13 +54,17 @@ exports.createOrganizer = async (req, res) => {
   }
 };
 
-exports.updateOrganizer = async (req, res) => {
+exports.updateMovieTicket = async (req, res) => {
   try {
-    const event = await Event.findByIdAndUpdate(req.params.id, req.body, {});
+    const movieTicket = await MovieTicket.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {}
+    );
     res.status(200).json({
       status: "success",
       data: {
-        organizer,
+        movieTicket,
       },
     });
   } catch (err) {
@@ -71,12 +75,12 @@ exports.updateOrganizer = async (req, res) => {
   }
 };
 
-exports.deleteOrganizer = async (req, res) => {
+exports.deleteMovieTicket = async (req, res) => {
   try {
-    await Organizer.findByIdAndDelete(req.params.id);
+    await MovieTicket.findByIdAndDelete(req.params.id);
     res.status(204).json({
       status: "success",
-      organizer_id: req.params.id,
+      movieTicket_id: req.params.id,
     });
   } catch (err) {
     res.status(404).json({
