@@ -1,51 +1,51 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const organizerSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "please insert your name"]
+const cinemaSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "please insert your name"],
+  },
+  phone_number: {
+    type: Number,
+    required: [true, "please insert your phone number"],
+  },
+  email: {
+    type: String,
+    required: [true, "please insert your email"],
+  },
+  password: {
+    type: String,
+    required: [true, "please insert your password"],
+    minLength: 8,
+  },
+  address: {
+    city: {
+      type: String,
+      required: [true, "please insert your city"],
     },
-    phone_number: {
-        type: Number,
-        required: [true, "please insert your phone number"]
+    Location: {
+      coordinates: [Number],
     },
-    email: {
-        type: String,
-        required: [true, "please insert your email"]
+  },
+  seat: {
+    totalRoom: {
+      type: Number,
+      required: [true, "please insert total room number"],
     },
-    password: {
-        type: String,
-        required: [true, "please insert your password"],
-        minLength: 8,
+    seatPerRoom: {
+      type: Number,
+      required: [true, "please insert number of seat per room"],
     },
-    address: {
-        city: {
-            type: String,
-            required: [true, "please insert your city"]
-        },
-        Location: {
-            coordinates: [Number]
-        },
+    vipNumbers: [Number],
+    row: {
+      type: Number,
+      required: [true, "please insert seat arrangement information"],
     },
-    seat: {
-        totalRoom: {
-            type: Number,
-            required: [true, "please insert total room number"]
-        },
-        seatPerRoom: {
-            type: Number,
-            required: [true, "please insert number of seat per room"]
-        },
-        vipNumbers: [Number],
-        row: {
-            type: Number,
-            required: [true, "please insert seat arrangement information"]
-        },
-        column: {
-            type: Number,
-            required: [true, "please insert seat arrangement information"]
-        }
-    }
-})
-const Cinema = mongoose.model('Cinema', organizerSchema);
-module.exports = Cinema
+    column: {
+      type: Number,
+      required: [true, "please insert seat arrangement information"],
+    },
+  },
+});
+const Cinema = mongoose.model("Cinema", cinemaSchema);
+module.exports = Cinema;
