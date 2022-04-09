@@ -5,9 +5,7 @@ exports.getEventTicket = async(req, res) => {
         const eventTicket = await Event.findById(req.params.id);
         res.status(200).json({
             status: "success",
-            data: {
-                eventTicket,
-            },
+            data: eventTicket
         });
     } catch (err) {
         res.status(404).json({

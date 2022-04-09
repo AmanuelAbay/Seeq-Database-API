@@ -30,6 +30,6 @@ customerApp.listen(CUSTOMER_PORT, () => {
 cinemaApp.listen(CINEMA_PORT, () => {
     console.log(`SEEQ CINEMA PORT ${CINEMA_PORT}...`);
 });
-cinemaApp.listen(ORGANIZER_PORT, () => {
+organizerApp.listen(ORGANIZER_PORT, () => {
     console.log(`SEEQ ORGANIZER PORT ${ORGANIZER_PORT}...`);
 });

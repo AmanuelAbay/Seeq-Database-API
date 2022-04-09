@@ -18,15 +18,11 @@ exports.getAllEvents = async(req, res) => {
 };
 
 exports.getEvent = async(req, res) => {
-    // console.log(req.params);
-    // const id = req.params.id * 1;
     try {
-        const event = await Event.findById(req.params.id);
+        const event = await Event.findById(req.params.id).populate({ path: 'attendee._id', select: '-__v -_id -password' });
         res.status(200).json({
             status: "success",
-            data: {
-                event,
-            },
+            data: event
         });
     } catch (err) {
         res.status(404).json({
@@ -34,7 +30,6 @@ exports.getEvent = async(req, res) => {
             message: err,
         });
     }
-    // const tour = tours.find(el => el.id === id);
 };
 
 exports.createEvent = async(req, res) => {
