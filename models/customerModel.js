@@ -18,8 +18,14 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: [true, "please insert your password"],
         minLength: 8,
-        select: false
     }
+}, { toJSON: { virtuals: true }, toObject: { virtuals: true } })
+
+customerSchema.virtual('tickets', {
+    ref: 'Event',
+    foreignField: 'attendee._id',
+    localField: '_id'
 })
+
 const Customer = mongoose.model('Customer', customerSchema);
 module.exports = Customer

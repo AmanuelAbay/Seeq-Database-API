@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const express = require("express");
-const organizerController = require("./../controllers/organizerController");
+const organizerController = require("../../controllers/organizer/organizerController");
 
 const router = express.Router();
 

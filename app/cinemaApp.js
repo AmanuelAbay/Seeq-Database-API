@@ -2,10 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
-const cinemaRouter = require('./routes/cinemaRouter');
-const customerRouter = require('./routes/customerRouter');
-const organizerRouter = require('./routes/organizerRouter');
-const eventRouter = require('./routes/eventRouter');
+const cinemaRouter = require('../routes/cinema/cinemaRouter');
 const app = express();
 
 // 1) MIDDLEWARES
@@ -21,17 +18,12 @@ app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 });
-
-// 3) ROUTES
-
+// 3) ROUTER
 app.use('/seeq/api/cinemas', cinemaRouter);
-app.use('/seeq/api/organizers', organizerRouter);
-app.use('/seeq/api/user', customerRouter);
-app.use('/seeq/api/events', eventRouter);
 app.all('*', (req, res, next) => {
     res.status(404).json({
-        status: 'fail',
-        message: `can't find ${req.originalUrl} on this server`
+        status: 'FAIL',
+        message: `CAN'T FIND ${req.originalUrl} ON CINEMA SERVER`
     })
 })
 

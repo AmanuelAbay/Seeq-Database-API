@@ -1,13 +1,13 @@
-const Organizer = require("./../models/organizerModel");
+const Cinema = require("../../models/cinemaModel");
 
-exports.getAllOrganizers = async(req, res) => {
+exports.getAllCinemas = async(req, res) => {
     try {
-        const organizers = await Organizer.find();
+        const cinemas = await Cinema.find();
         res.status(200).json({
             status: "success",
             requestedAt: req.requestTime,
-            results: organizers.length,
-            data: organizers,
+            results: cinemas.length,
+            data: cinemas,
         });
     } catch (err) {
         res.status(404).json({
@@ -17,15 +17,15 @@ exports.getAllOrganizers = async(req, res) => {
     }
 };
 
-exports.getOrganizer = async(req, res) => {
+exports.getCinema = async(req, res) => {
     // console.log(req.params);
     // const id = req.params.id * 1;
     try {
-        const organizer = await Organizer.findById(req.params.id);
+        const cinema = await Cinema.findById(req.params.id);
         res.status(200).json({
             status: "success",
             data: {
-                organizer,
+                cinema,
             },
         });
     } catch (err) {
@@ -37,13 +37,13 @@ exports.getOrganizer = async(req, res) => {
     // const tour = tours.find(el => el.id === id);
 };
 
-exports.createOrganizer = async(req, res) => {
+exports.createCinema = async(req, res) => {
     try {
-        const newOrganizer = await Organizer.create(req.body);
+        const newCinema = await Cinema.create(req.body);
         res.status(200).json({
             status: "success",
             data: {
-                organizer_id: newOrganizer._id,
+                cinema_id: newCinema._id,
             },
         });
     } catch (err) {
@@ -54,13 +54,13 @@ exports.createOrganizer = async(req, res) => {
     }
 };
 
-exports.updateOrganizer = async(req, res) => {
+exports.updateCinema = async(req, res) => {
     try {
-        const event = await Event.findByIdAndUpdate(req.params.id, req.body, {});
+        const cinema = await Cinema.findByIdAndUpdate(req.params.id, req.body, {});
         res.status(200).json({
             status: "success",
             data: {
-                organizer,
+                cinema,
             },
         });
     } catch (err) {
@@ -71,12 +71,12 @@ exports.updateOrganizer = async(req, res) => {
     }
 };
 
-exports.deleteOrganizer = async(req, res) => {
+exports.deleteCinema = async(req, res) => {
     try {
-        await Organizer.findByIdAndDelete(req.params.id);
+        await Cinema.findByIdAndDelete(req.params.id);
         res.status(204).json({
             status: "success",
-            organizer_id: req.params.id,
+            cinema_id: req.params.id,
         });
     } catch (err) {
         res.status(404).json({
