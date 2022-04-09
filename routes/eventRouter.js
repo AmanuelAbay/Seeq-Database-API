@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
-const eventController = require('./../controllers/eventController');
+const eventController = require('./../controllers/cinemaController');
 
 const router = express.Router();
 
