@@ -1,19 +1,19 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
-const cinemaController = require('./../controllers/cinemaController');
+const eventController = require('./../controllers/eventController');
 
 const router = express.Router();
 
 
 router
     .route('/')
-    .get(cinemaController.getAllCinemas)
-    .post(cinemaController.createCinema);
+    .get(eventController.getAllEvents)
+    .post(eventController.createEvent);
 
 router
     .route('/:id')
-    .get(cinemaController.getCinem)
-    .patch(cinemaController.updateCinema)
-    .delete(cinemaController.deleteCinema);
+    .get(eventController.getEvent)
+    .patch(eventController.updateEvent)
+    .delete(eventController.deleteEvent);
 
 module.exports = router;
