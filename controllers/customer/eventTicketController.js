@@ -1,29 +1,12 @@
 const Event = require("../../models/eventModel");
+const Customer = require("../../models/customerModel");
 
 exports.getEventTicket = async(req, res) => {
     try {
-        const eventTicket = await Event.findById(req.params.id);
+        const eventTicket = await Customer.findById(req.params.id).select('tickets').populate({ path: 'tickets', select: '-__v -attendee.status -attendee.ticket_numbers' });
         res.status(200).json({
             status: "success",
             data: eventTicket
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: "fail",
-            message: err,
-        });
-    }
-    // const tour = tours.find(el => el.id === id);
-};
-exports.getEventTickets = async(req, res) => {
-
-    try {
-        const eventTickets = await Event.find();
-        res.status(200).json({
-            status: "success",
-            data: {
-                eventTickets
-            },
         });
     } catch (err) {
         res.status(404).json({

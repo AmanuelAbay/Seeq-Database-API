@@ -4,10 +4,6 @@ const eventTicketController = require("../../controllers/customer/eventTicketCon
 const router = express.Router();
 
 router
-    .route("/")
-    .get(eventTicketController.getEventTickets)
-
-router
     .route("/:id")
     .get(eventTicketController.getEventTicket)
     .post(eventTicketController.BookEventTicket)

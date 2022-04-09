@@ -2,7 +2,7 @@
 const Event = require("../../models/eventModel");
 exports.getAllEvents = async(req, res) => {
     try {
-        const events = await Event.find();
+        const events = await Event.find().select("-attendee -__v").populate({ path: 'organizer', select: '-__v -_id -password' });
         res.status(200).json({
             status: "success",
             requestedAt: req.requestTime,
