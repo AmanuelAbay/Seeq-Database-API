@@ -1,32 +1,11 @@
-const Customer = require('./../models/customerModel');
-
-exports.getAllCustomers = async(req, res) => {
-    try {
-        const customers = await Customer.find()
-        res.status(200).json({
-            status: 'success',
-            requestedAt: req.requestTime,
-            results: customers.length,
-            data: customers
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: "fail",
-            message: err
-        });
-    }
-};
+const Customer = require('../../models/customerModel');
 
 exports.getCustomer = async(req, res) => {
-    // console.log(req.params);
-    // const id = req.params.id * 1;
     try {
-        const customer = await Customer.findById(req.params.id);
+        const customer = await Customer.findById(req.params.id).populate('tickets');
         res.status(200).json({
             status: 'success',
-            data: {
-                customer
-            }
+            data: customer
         });
     } catch (err) {
         res.status(404).json({
@@ -34,7 +13,6 @@ exports.getCustomer = async(req, res) => {
             message: err
         })
     }
-    // const tour = tours.find(el => el.id === id);
 };
 
 exports.createCustomer = async(req, res) => {

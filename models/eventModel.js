@@ -5,8 +5,11 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: [true, "please insert your name"]
     },
-    image_url: {
-        type: [String]
+    images_url: {
+        path: {
+            type: [String],
+            required: [true, "please insert at least one image"]
+        }
     },
     cover_image: {
         type: String,
@@ -63,9 +66,11 @@ const eventSchema = new mongoose.Schema({
             required: [true, "please insert your city"]
         },
         Location: {
-            coordinates: [Number]
-        },
-        required: [true, "please insert the place where event will be takes place"]
+            coordinates: {
+                type: [Number],
+                required: [true, "please insert the place where event will be takes place"]
+            }
+        }
     },
     attendee: [{
         id: {
