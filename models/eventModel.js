@@ -73,7 +73,7 @@ const eventSchema = new mongoose.Schema({
         }
     },
     attendee: [{
-        id: {
+        _id: {
             type: mongoose.Schema.ObjectId,
             ref: 'Customer'
         },

@@ -6,7 +6,6 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(organizerController.getAllOrganizers)
     .post(organizerController.createOrganizer);
 
 router
