@@ -1,65 +1,36 @@
 const mongoose = require('mongoose');
 
 const movieTicketSchema = new mongoose.Schema({
-    title: {
+    movie_id: {
         type: String,
-        required: [true, "please insert your name"]
+        required: [true, "please insert movie"]
     },
-    cover_image: {
-        type: String,
-        required: [true, "please insert the cover photo"]
-    },
-    organizer: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Organizer'
-    },
-    startedDate: {
-        Date: {
-            type: String,
-            required: [true, "please insert event starting Date"]
-        },
-        Hours: {
-            type: String,
-            required: [true, "please insert event starting Hour"]
-        }
-    },
-    endDate: {
-        Date: {
-            type: String,
-            required: [true, "please insert event starting Date"]
-        },
-        Hours: {
-            type: String,
-            required: [true, "please insert event starting Hour"]
-        }
-    },
-    price: {
-        normal: {
-            type: Number
-        },
-        vip: {
-            type: Number
-        },
-        default: 0
-    },
-    place: {
-        city: {
-            type: String,
-            required: [true, "please insert your city"]
-        },
-        Location: {
-            coordinates: [Number]
-        },
-        required: [true, "please insert the place where event will be takes place"]
-    },
-    users: [{
-        id: {
+    cinemas: [{
+        _id: {
             type: mongoose.Schema.ObjectId,
-            ref: 'Customer'
+            ref: 'Cinema'
         },
-        ticket_numbers: Number,
-        status: String
+        cinema_available: [
+            {
+            status: String,
+            Date: {
+                type: String,
+                required: [true, "please insert event starting Date"]
+            },
+            Hours: {
+                type: String,
+                required: [true, "please insert event starting Hour"]
+            },
+            room_no: Number,
+            customer: [{
+                _id: {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'Customer'
+                },
+                seat_number: [Number],
+            }]
+        }]
     }]
 })
-const MovieTicket = mongoose.model('eventTicket', movieTicketSchema);
+const MovieTicket = mongoose.model('movieTicket', movieTicketSchema);
 module.exports = MovieTicket

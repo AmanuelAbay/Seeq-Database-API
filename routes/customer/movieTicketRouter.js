@@ -1,18 +1,11 @@
 /* eslint-disable prettier/prettier */
 const express = require("express");
-const movieTicketController = require("../../controllers/cinema/movieTicketController");
-
+const movieTicketController = require("../../controllers/customer/movieTicketController");
 const router = express.Router();
-
-router
-    .route("/")
-    .get(movieTicketController.getAllMovies)
-    .post(movieTicketController.createMovie);
 
 router
     .route("/:id")
     .get(movieTicketController.getMovieTicket)
-    .patch(movieTicketController.updateMovieTicket)
+    .post(movieTicketController.BookMovieTicket)
     .delete(movieTicketController.deleteMovieTicket);
-
 module.exports = router;
