@@ -1,4 +1,5 @@
 const Cinema = require("../../models/cinemaModel");
+const imageUpload = require("../../handler/imageUpload");
 
 exports.getCinema = async (req, res) => {
   // console.log(req.params);
@@ -7,7 +8,7 @@ exports.getCinema = async (req, res) => {
     const cinema = await Cinema.findById(req.params.id);
     res.status(200).json({
       status: "success",
-      cinema: cinema
+      cinema: cinema,
     });
   } catch (err) {
     res.status(404).json({
@@ -20,16 +21,24 @@ exports.getCinema = async (req, res) => {
 
 exports.createCinema = async (req, res) => {
   try {
-    const newCinema = await Cinema.create(req.body);
+    // create cinema request
+    const cinema = {
+      name: req.body.name,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      status: req.body.status,
+      password: req.body.password,
+      license: await imageUpload(req.body.license),
+    };
+    const newCinema = await Cinema.create(cinema);
+
     res.status(200).json({
       status: "success",
-      data: {
-        cinema_id: newCinema._id,
-      },
+      id: newCinema._id,
     });
   } catch (err) {
-    res.status(400).json({
-      status: "error",
+    res.status(404).json({
+      status: "fail",
       message: err,
     });
   }
@@ -37,12 +46,10 @@ exports.createCinema = async (req, res) => {
 
 exports.updateCinema = async (req, res) => {
   try {
-    const cinema = await Cinema.findByIdAndUpdate(req.params.id, req.body, {});
+    const cinema = await Cinema.updateOne({_id:req.params.id}, req.body, {multi:true});
     res.status(200).json({
       status: "success",
-      data: {
-        cinema,
-      },
+      data: "successfully Updated the data!!"
     });
   } catch (err) {
     res.status(404).json({

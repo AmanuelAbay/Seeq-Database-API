@@ -2,7 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-
+const bodyParser = require("body-parser");
 const cinemaRouter = require('../routes/cinema/cinemaRouter');
 const movieTicketRouter = require('../routes/cinema/movieTicketRouter');
 const app = express();
@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50MB" }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
