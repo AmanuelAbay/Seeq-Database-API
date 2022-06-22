@@ -19,7 +19,7 @@ exports.getAllEvents = async(req, res) => {
 
 exports.getEvent = async(req, res) => {
     try {
-        const event = await Event.findById(req.params.id);
+        const event = await Event.findById(req.params.id).select("-attendee -__v").populate({ path: 'organizer', select: '-__v -_id -password' });
         res.status(200).json({
             status: "success",
             data: event

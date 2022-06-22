@@ -7,7 +7,6 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(cinemaController.getAllCinemas)
     .post(cinemaController.createCinema);
 
 router

@@ -5,45 +5,46 @@ const cinemaSchema = new mongoose.Schema({
     type: String,
     required: [true, "please insert your name"],
   },
-  phone_number: {
-    type: Number,
-    required: [true, "please insert your phone number"],
-  },
   email: {
     type: String,
     required: [true, "please insert your email"],
+  },
+  status: {
+    type: String,
+    default: "pending",
   },
   password: {
     type: String,
     required: [true, "please insert your password"],
     minLength: 8,
   },
+  license: {
+    type: String,
+  },
+
+  totalRoom: {
+    type: Number,
+  },
+  seatPerRoom: {
+    type: Number,
+  },
+  // vipNumbers: [Number],
+  row: {
+    type: Number,
+    // required: [true, "please insert seat arrangement information"],
+  },
+  column: {
+    type: Number,
+    // required: [true, "please insert seat arrangement information"],
+  },
   address: {
     city: {
       type: String,
-      required: [true, "please insert your city"],
+      // required: [true, "please insert your city"],
     },
-    Location: {
-      coordinates: [Number],
-    },
-  },
-  seat: {
-    totalRoom: {
-      type: Number,
-      required: [true, "please insert total room number"],
-    },
-    seatPerRoom: {
-      type: Number,
-      required: [true, "please insert number of seat per room"],
-    },
-    vipNumbers: [Number],
-    row: {
-      type: Number,
-      required: [true, "please insert seat arrangement information"],
-    },
-    column: {
-      type: Number,
-      required: [true, "please insert seat arrangement information"],
+    subCity: {
+      type: String,
+      // required: [true, "please insert the subCity"],
     },
   },
 });

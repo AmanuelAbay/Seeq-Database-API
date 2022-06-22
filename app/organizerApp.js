@@ -3,8 +3,10 @@ const express = require('express');
 const morgan = require('morgan');
 const organizerRouter = require('../routes/organizer/organizerRouter');
 const eventRouter = require('../routes/organizer/eventRouter');
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 // 1) MIDDLEWARES
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(movieTicketController.getAllMovieTickets)
+    .get(movieTicketController.getAllMovies)
     .post(movieTicketController.createMovieTicket);
 
 router

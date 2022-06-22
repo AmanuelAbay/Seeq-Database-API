@@ -22,7 +22,7 @@ connect(DB, {
 
 const CUSTOMER_PORT = process.env.CUSTOMER_PORT || 3000;
 const CINEMA_PORT = process.env.CINEMA_PORT || 5000;
-const ORGANIZER_PORT = process.env.ORGANIZER_PORT || 7000;
+const ORGANIZER_PORT = process.env.ORGANIZER_PORT || 9000;
 
 customerApp.listen(CUSTOMER_PORT, () => {
     console.log(`SEEQ CUSTOMER PORT ${CUSTOMER_PORT}...`);

@@ -11,11 +11,16 @@
     "author": "Team_Seeq",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.27.2",
+        "body-parser": "^1.20.0",
+        "cloudinary": "^1.30.0",
+        "cors": "^2.8.5",
         "dotenv": "^16.0.0",
         "express": "^4.17.3",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.13.14",
         "morgan": "^1.10.0",
+        "node-datetime": "^2.1.2",
         "nodemon": "^2.0.15",
         "router": "^1.3.6",
         "validator": "^13.7.0"
