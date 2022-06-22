@@ -5,6 +5,9 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const cinemaRouter = require('../routes/cinema/cinemaRouter');
 const movieTicketRouter = require('../routes/cinema/movieTicketRouter');
+const moviesRouter = require('../routes/cinema/moviesRouter');
+const genresRouter = require('../routes/cinema/genresRouter');
+const movieSearchRouter = require('../routes/cinema/movieSearchRouter');
 const app = express();
 
 // 1) MIDDLEWARES
@@ -26,6 +29,9 @@ app.use((req, res, next) => {
 // 3) ROUTER
 app.use('/seeq/api/cinemas', cinemaRouter);
 app.use('/seeq/api/movie/tickets', movieTicketRouter);
+app.use('/seeq/api/movies', moviesRouter);
+app.use('/seeq/api/movies/search', movieSearchRouter);
+app.use('/seeq/api/movies/genres', genresRouter);
 app.all('*', (req, res, next) => {
     res.status(404).json({
         status: 'FAIL',

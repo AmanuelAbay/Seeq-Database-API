@@ -1,20 +1,19 @@
 const mongoose = require("mongoose");
 
-const movieModel = new mongoose.Schema({
-  _id: {
+const movieModelSchema = new mongoose.Schema({
+  name: {
     type: String,
-    required: [true, "please select the movie first"],
   },
-  users: [
-    {
-      id: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Customer",
-      },
-      ticket_numbers: Number,
-      status: String,
-    },
-  ],
+  movie_title: String,
+  movie_poster: String,
+  cinema_address: String,
+  date: String,
+  ticket_number: [Number],
+  status: String,
+  bought_by: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Customer",
+  },
 });
-const EventTicket = mongoose.model("eventTicket", eventTicketSchema);
-module.exports = EventTicket;
+const user_ticket = mongoose.model("user_ticket", movieModelSchema);
+module.exports = user_ticket;

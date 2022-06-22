@@ -4,8 +4,13 @@ const movieTicketController = require("../../controllers/customer/movieTicketCon
 const router = express.Router();
 
 router
-    .route("/:id")
-    .get(movieTicketController.getMovieTicket)
-    .post(movieTicketController.BookMovieTicket)
-    .delete(movieTicketController.deleteMovieTicket);
+  .route("/")
+  .get(movieTicketController.getMovieTicket)
+  .post(movieTicketController.createMovieTicket)
+  .delete(movieTicketController.deleteMovieTicket);
+router
+  .route("/:id")
+  .get(movieTicketController.getMovieTicket)
+  .post(movieTicketController.createMovieTicket)
+  .delete(movieTicketController.deleteMovieTicket);
 module.exports = router;

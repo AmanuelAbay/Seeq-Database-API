@@ -7,7 +7,7 @@ const router = express.Router();
 router
     .route("/")
     .get(movieTicketController.getAllMovies)
-    .post(movieTicketController.createMovie);
+    .post(movieTicketController.createMovieTicket);
 
 router
     .route("/:id")

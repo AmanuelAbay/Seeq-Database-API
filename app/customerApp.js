@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 app.use('/seeq/api/user', customerRouter);
 app.use('/seeq/api/events', eventsRouter);
 app.use('/seeq/api/events/tickets', eventTicketRouter);
-app.use('/seeq/api/movies', moviesRouter);
+app.use('/seeq/api/movie', moviesRouter);
 app.use('/seeq/api/movies/tickets', movieTicketRouter);
 app.all('*', (req, res, next) => {
     res.status(404).json({
