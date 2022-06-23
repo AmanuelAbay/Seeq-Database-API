@@ -5,10 +5,10 @@ const dateTime = require("node-datetime");
 
 exports.getMovieTicket = async (req, res) => {
   try {
-    const movieTicket = await Customer.findById(req.params.id);
+    const movieTicket = await Customer.find({bought_by:req.params.id});
     res.status(200).json({
       status: "success",
-      data: eventTicket,
+      data: movieTicket,
     });
   } catch (err) {
     res.status(404).json({
